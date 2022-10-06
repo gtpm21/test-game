@@ -9,7 +9,6 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Rigidbody rb;
     [SerializeField] private FixedJoystick js;
     [SerializeField] private Animator animator;
-
     [SerializeField] private float MoveSpeed;
 
     void Start()

@@ -8,6 +8,8 @@ TagManager:
   - floor
   - Projectile
   - axe
+  - pickup
+  - player
   layers:
   - Default
   - TransparentFX
