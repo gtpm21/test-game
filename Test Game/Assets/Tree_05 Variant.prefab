@@ -69,7 +69,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9069115365609291303, guid: 60f79905accf3b24fa0114b941f1aac0, type: 3}
       propertyPath: m_Name
-      value: Tree_05
+      value: Tree_05 Variant
       objectReference: {fileID: 0}
     - target: {fileID: 9069115365609291303, guid: 60f79905accf3b24fa0114b941f1aac0, type: 3}
       propertyPath: m_TagString
@@ -113,8 +113,9 @@ MonoBehaviour:
   triggerOptions:
     triggerType: 1
     minimumCollisionForce: 0
-    filterCollisionsByTag: 0
-    triggerAllowedTags: []
+    filterCollisionsByTag: 1
+    triggerAllowedTags:
+    - axe
     triggerKey: 0
   fractureOptions:
     fragmentCount: 10

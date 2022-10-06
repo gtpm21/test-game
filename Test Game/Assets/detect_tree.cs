@@ -5,6 +5,7 @@ using UnityEngine;
 public class detect_tree : MonoBehaviour
 {
     [SerializeField] private Animator animator;
+    [SerializeField] private GameObject axe;
     
     private void OnTriggerEnter(Collider col)
     {
@@ -12,6 +13,7 @@ public class detect_tree : MonoBehaviour
         if (col.gameObject.CompareTag("tree"))
         {
             animator.SetBool("tree_detected", true);
+            axe.tag = "axe";
         }
     }
 
@@ -21,6 +23,7 @@ public class detect_tree : MonoBehaviour
         if (col.gameObject.CompareTag("tree"))
         {
             animator.SetBool("tree_detected", false);
+            axe.tag = "Untagged";
         }
     }
 
