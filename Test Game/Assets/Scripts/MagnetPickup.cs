@@ -22,7 +22,7 @@ public class MagnetPickup : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        if (other.tag == "pickup")
+        if (other.tag == "pickup_green" || other.tag == "pickup_pink" || other.tag == "pickup_cyan")
         {
             Transform pickup = other.transform;
             m_Rigidbody = other.attachedRigidbody;

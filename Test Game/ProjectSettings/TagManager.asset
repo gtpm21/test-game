@@ -4,12 +4,16 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - tree
   - floor
-  - Projectile
   - axe
-  - pickup
   - player
+  - shop
+  - pickup_green
+  - pickup_pink
+  - green_tree
+  - pink_tree
+  - cyan_tree
+  - pickup_cyan
   layers:
   - Default
   - TransparentFX

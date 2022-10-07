@@ -8,17 +8,15 @@ public class detect_tree : MonoBehaviour
     [SerializeField] private GameObject axe;
     [SerializeField] private Rigidbody rb;
     [SerializeField] private FixedJoystick js;
-    Collider m_Collider;
     bool triggered = false;
     Collider other;
 
     private void OnTriggerStay(Collider other)
     {
-        if (other.gameObject.CompareTag("tree") && rb.velocity.magnitude == 0 && js.Horizontal == 0 && js.Vertical == 0)
+        if ((other.gameObject.CompareTag("green_tree") || other.gameObject.CompareTag("pink_tree") || other.gameObject.CompareTag("cyan_tree")) && rb.velocity.magnitude == 0 && js.Horizontal == 0 && js.Vertical == 0)
         {
             triggered = true;
             this.other = other;
-            Debug.Log("Collision!");
             animator.SetBool("tree_detected", true);
             axe.tag = "axe";
         }
@@ -26,9 +24,8 @@ public class detect_tree : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.gameObject.CompareTag("tree"))
+        if (other.gameObject.CompareTag("green_tree") || other.gameObject.CompareTag("pink_tree") || other.gameObject.CompareTag("cyan_tree"))
         {
-            Debug.Log("No Collision!");
             animator.SetBool("tree_detected", false);
             axe.tag = "Untagged";
         }
@@ -45,7 +42,6 @@ public class detect_tree : MonoBehaviour
     {
         if (triggered && !other.gameObject.activeInHierarchy)
         {
-            Debug.Log("No Collision!");
             animator.SetBool("tree_detected", false);
             axe.tag = "Untagged";
         }
