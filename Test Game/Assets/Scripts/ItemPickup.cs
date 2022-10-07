@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class ItemPickup : MonoBehaviour
 {
+    public int pickupNumber = 0;
     
     // Start is called before the first frame update
     void Start()
@@ -21,6 +22,7 @@ public class ItemPickup : MonoBehaviour
     {
         if(col.gameObject.tag == "pickup")
         {
+            pickupNumber++;
             Destroy(col.gameObject);
         }
     }
