@@ -42,4 +42,15 @@ public class Currency : MonoBehaviour
 
         }
     }
+
+    private void OnCollisionExit(Collision collision)
+    {
+        player.GetComponent<ItemPickup>().greenTreesCollected = 0;
+        player.GetComponent<ItemPickup>().pinkTreesCollected = 0;
+        player.GetComponent<ItemPickup>().cyanTreesCollected = 0;
+
+        player.GetComponent<ItemPickup>().greenPieces = 0;
+        player.GetComponent<ItemPickup>().pinkPieces = 0;
+        player.GetComponent<ItemPickup>().cyanPieces = 0;
+    }
 }
