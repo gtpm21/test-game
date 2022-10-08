@@ -34,15 +34,17 @@ public class GenerateZone : MonoBehaviour
                 for (int i = 0; i <= numberOfTrees; i++) 
                 {
                     var position = new Vector3(Random.Range(-9f, 9f), 0, Random.Range(zPos - 50, zPos + 50));
-                    Instantiate(prefab[0], position, Quaternion.identity, newZone.transform);
+                    GameObject tree = Instantiate(prefab[0], position, Quaternion.identity, newZone.transform);
+                    tree.GetComponent<TreeID>().id = System.Guid.NewGuid().ToString();
                 }
             }
-            else
+            else if (zPos >100)
             {
                 for (int i = 0; i <= numberOfTrees; i++)
                 {
                     var position = new Vector3(Random.Range(-9f, 9f), 0, Random.Range(zPos - 50, zPos + 50));
-                    Instantiate(prefab[1], position, Quaternion.identity, newZone.transform);
+                    GameObject tree = Instantiate(prefab[1], position, Quaternion.identity, newZone.transform);
+                    tree.GetComponent<TreeID>().id = System.Guid.NewGuid().ToString();
                 }
             }
             holder.GetComponent<DistanceZones>().zPos += 100;

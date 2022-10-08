@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class ItemPickup : MonoBehaviour
+public class ItemPickup : MonoBehaviour, IDataPersistence
 {
     public TextMeshProUGUI greenTreesText;
     public TextMeshProUGUI pinkTreesText;
@@ -14,9 +14,9 @@ public class ItemPickup : MonoBehaviour
     public double greenPieces = 0;
     public double pinkPieces = 0;
     public double cyanPieces = 0;
-    public double greenTreesCollected = 0;
-    public double pinkTreesCollected = 0;
-    public double cyanTreesCollected = 0;
+    public double greenTreesCollected;
+    public double pinkTreesCollected;
+    public double cyanTreesCollected;
 
     // Start is called before the first frame update
     void Start()
@@ -57,6 +57,20 @@ public class ItemPickup : MonoBehaviour
             previousCyanPieces = cyanPieces;
         }
         cyanTreesText.text = cyanTreesCollected.ToString();
+    }
+
+    public void LoadData(GameData data)
+    {
+        this.greenTreesCollected = data.greenTreesCollected;
+        this.pinkTreesCollected = data.pinkTreesCollected;
+        this.cyanTreesCollected = data.cyanTreesCollected;
+    }
+
+    public void SaveData(GameData data)
+    {
+        data.greenTreesCollected = this.greenTreesCollected;
+        data.pinkTreesCollected = this.pinkTreesCollected;
+        data.cyanTreesCollected = this.cyanTreesCollected;
     }
 
     private void OnCollisionEnter(Collision col)

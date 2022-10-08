@@ -4,7 +4,7 @@ using UnityEngine;
 using LargeNumbers;
 using TMPro;
 
-public class Currency : MonoBehaviour
+public class Currency : MonoBehaviour, IDataPersistence
 {
     public TextMeshProUGUI AlphabeticNotationText;
     public AlphabeticNotation currency = new AlphabeticNotation(0d);
@@ -19,7 +19,17 @@ public class Currency : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        AlphabeticNotationText.text = currency.ToString();
+    }
+
+    public void LoadData(GameData data)
+    {
+        this.currency = data.coins;
+    }
+
+    public void SaveData(ref GameData data)
+    {
+        data.coins = this.currency;
     }
 
     private void OnCollisionEnter(Collision other)
@@ -29,8 +39,6 @@ public class Currency : MonoBehaviour
             currency = currency + (player.GetComponent<ItemPickup>().greenTreesCollected * 1);
             currency = currency + (player.GetComponent<ItemPickup>().pinkTreesCollected * 2);
             currency = currency + (player.GetComponent<ItemPickup>().cyanTreesCollected * 3);
-
-            AlphabeticNotationText.text = currency.ToString();
 
             player.GetComponent<ItemPickup>().greenTreesCollected = 0;
             player.GetComponent<ItemPickup>().pinkTreesCollected = 0;
