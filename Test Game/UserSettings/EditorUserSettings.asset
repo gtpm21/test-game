@@ -29,6 +29,9 @@ EditorUserSettings:
     RecentlyUsedSceneGuid-7:
       value: 5b090052070108095e0c0f26157b0c44434e492c7b7e2369792f4f63b4b1326c
       flags: 0
+    UnityRemoteCompression:
+      value: 337f73
+      flags: 0
     UnityRemoteDevice:
       value: 225f4d46245b0d4902070862342649191512
       flags: 0

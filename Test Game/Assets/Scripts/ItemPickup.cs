@@ -5,6 +5,7 @@ using TMPro;
 
 public class ItemPickup : MonoBehaviour, IDataPersistence
 {
+    public Canvas canvas;
     public TextMeshProUGUI greenTreesText;
     public TextMeshProUGUI pinkTreesText;
     public TextMeshProUGUI cyanTreesText;
@@ -28,6 +29,16 @@ public class ItemPickup : MonoBehaviour, IDataPersistence
     // Update is called once per frame
     void Update()
     {
+        if (pinkTreesCollected > 0)
+        {
+            canvas.transform.GetChild(3).gameObject.SetActive(true);
+        }
+        
+        if (cyanTreesCollected > 0)
+        {
+            canvas.transform.GetChild(4).gameObject.SetActive(true);
+        }
+
         if (previousGreenPieces != greenPieces)
         {
             if(greenPieces % 20 == 0)

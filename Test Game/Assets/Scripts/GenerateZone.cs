@@ -9,14 +9,14 @@ public class GenerateZone : MonoBehaviour
     public GameObject holder;
     public int numberOfTrees = 150;
     public int zPos;
-
-    public int zonesGenerated = 0;
+    public int zonesGenerated;
 
     // Start is called before the first frame update
     void Start()
     {
 
         zPos = holder.GetComponent<DistanceZones>().zPos;
+        zonesGenerated = holder.GetComponent<DistanceZones>().zonesGenerated;
     }
 
     // Update is called once per frame
@@ -30,7 +30,6 @@ public class GenerateZone : MonoBehaviour
         if (other.gameObject.tag == "player")
         {
             GameObject newZone = Instantiate(zone, new Vector3(0, 0, zPos), Quaternion.identity);
-            zonesGenerated++;
 
             if (zPos == 100) 
             {
@@ -50,6 +49,7 @@ public class GenerateZone : MonoBehaviour
                     tree.GetComponent<TreeID>().id = System.Guid.NewGuid().ToString();
                 }
             }
+            holder.GetComponent<DistanceZones>().zonesGenerated++;
             holder.GetComponent<DistanceZones>().zPos += 100;
             gameObject.GetComponent<BoxCollider>().enabled = false;
         }
