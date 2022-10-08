@@ -27,7 +27,7 @@ public class Currency : MonoBehaviour, IDataPersistence
         this.currency = data.coins;
     }
 
-    public void SaveData(ref GameData data)
+    public void SaveData(GameData data)
     {
         data.coins = this.currency;
     }

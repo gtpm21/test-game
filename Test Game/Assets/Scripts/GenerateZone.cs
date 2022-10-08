@@ -10,6 +10,8 @@ public class GenerateZone : MonoBehaviour
     public int numberOfTrees = 150;
     public int zPos;
 
+    public int zonesGenerated = 0;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -28,6 +30,7 @@ public class GenerateZone : MonoBehaviour
         if (other.gameObject.tag == "player")
         {
             GameObject newZone = Instantiate(zone, new Vector3(0, 0, zPos), Quaternion.identity);
+            zonesGenerated++;
 
             if (zPos == 100) 
             {
