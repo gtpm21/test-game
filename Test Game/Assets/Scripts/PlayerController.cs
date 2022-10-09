@@ -7,7 +7,7 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour, IDataPersistence
 {
     [SerializeField] private Rigidbody rb;
-    [SerializeField] private FixedJoystick js;
+    [SerializeField] private FloatingJoystick js;
     [SerializeField] private Animator animator;
     [SerializeField] private float MoveSpeed;
 

@@ -6,7 +6,7 @@ public class detect_tree : MonoBehaviour
 {
     [SerializeField] private Animator animator;
     [SerializeField] private GameObject axe;
-    [SerializeField] private FixedJoystick js;
+    [SerializeField] private FloatingJoystick js;
     bool triggered = false;
     Collider other;
 
