@@ -10,12 +10,6 @@ public class Currency : MonoBehaviour, IDataPersistence
     public AlphabeticNotation currency = new AlphabeticNotation(0d);
     public GameObject player;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
     // Update is called once per frame
     void Update()
     {
@@ -49,16 +43,5 @@ public class Currency : MonoBehaviour, IDataPersistence
             player.GetComponent<ItemPickup>().cyanPieces = 0;
 
         }
-    }
-
-    private void OnCollisionExit(Collision collision)
-    {
-        player.GetComponent<ItemPickup>().greenTreesCollected = 0;
-        player.GetComponent<ItemPickup>().pinkTreesCollected = 0;
-        player.GetComponent<ItemPickup>().cyanTreesCollected = 0;
-
-        player.GetComponent<ItemPickup>().greenPieces = 0;
-        player.GetComponent<ItemPickup>().pinkPieces = 0;
-        player.GetComponent<ItemPickup>().cyanPieces = 0;
     }
 }

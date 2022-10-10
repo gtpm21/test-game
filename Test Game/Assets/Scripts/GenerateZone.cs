@@ -10,19 +10,13 @@ public class GenerateZone : MonoBehaviour
     public int numberOfTrees = 150;
     public int zPos;
     public int zonesGenerated;
+    private float generationLimitWidth = 9;
 
     // Start is called before the first frame update
     void Start()
     {
-
         zPos = holder.GetComponent<DistanceZones>().zPos;
         zonesGenerated = holder.GetComponent<DistanceZones>().zonesGenerated;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 
     private void OnTriggerEnter(Collider other)
@@ -35,7 +29,7 @@ public class GenerateZone : MonoBehaviour
             {
                 for (int i = 0; i <= numberOfTrees; i++) 
                 {
-                    var position = new Vector3(Random.Range(-9f, 9f), 0, Random.Range(zPos - 50, zPos + 50));
+                    var position = new Vector3(Random.Range(-generationLimitWidth, generationLimitWidth), 0, Random.Range(zPos - 50, zPos + 50));
                     GameObject tree = Instantiate(prefab[0], position, Quaternion.identity, newZone.transform);
                     tree.GetComponent<TreeID>().id = System.Guid.NewGuid().ToString();
                 }
@@ -44,7 +38,7 @@ public class GenerateZone : MonoBehaviour
             {
                 for (int i = 0; i <= numberOfTrees; i++)
                 {
-                    var position = new Vector3(Random.Range(-9f, 9f), 0, Random.Range(zPos - 50, zPos + 50));
+                    var position = new Vector3(Random.Range(-generationLimitWidth, generationLimitWidth), 0, Random.Range(zPos - 50, zPos + 50));
                     GameObject tree = Instantiate(prefab[1], position, Quaternion.identity, newZone.transform);
                     tree.GetComponent<TreeID>().id = System.Guid.NewGuid().ToString();
                 }

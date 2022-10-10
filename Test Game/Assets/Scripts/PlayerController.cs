@@ -11,11 +11,6 @@ public class PlayerController : MonoBehaviour, IDataPersistence
     [SerializeField] private Animator animator;
     [SerializeField] private float MoveSpeed;
 
-    void Start()
-    {
-        
-    }
-
     public void LoadData(GameData data)
     {
         this.transform.position = data.playerPosition;
@@ -40,10 +35,5 @@ public class PlayerController : MonoBehaviour, IDataPersistence
             animator.SetBool("idling", true);
         }
                    
-    }
-
-    void Update()
-    {
-        
     }
 }

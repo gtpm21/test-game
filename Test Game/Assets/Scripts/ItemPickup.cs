@@ -24,6 +24,7 @@ public class ItemPickup : MonoBehaviour, IDataPersistence
     {
         previousGreenPieces = greenPieces;
         previousPinkPieces = pinkPieces;
+        previousCyanPieces = cyanPieces;
     }
 
     // Update is called once per frame
@@ -39,7 +40,7 @@ public class ItemPickup : MonoBehaviour, IDataPersistence
             canvas.transform.GetChild(4).gameObject.SetActive(true);
         }
 
-        if (previousGreenPieces != greenPieces)
+        if (previousGreenPieces != greenPieces && greenPieces != 0)
         {
             if(greenPieces % 20 == 0)
             {
@@ -49,7 +50,7 @@ public class ItemPickup : MonoBehaviour, IDataPersistence
         }
         greenTreesText.text = greenTreesCollected.ToString();
 
-        if (previousPinkPieces != pinkPieces)
+        if (previousPinkPieces != pinkPieces && pinkPieces != 0)
         {
             if (pinkPieces % 20 == 0)
             {
@@ -59,7 +60,7 @@ public class ItemPickup : MonoBehaviour, IDataPersistence
         }
         pinkTreesText.text = pinkTreesCollected.ToString();
 
-        if (previousCyanPieces != cyanPieces)
+        if (previousCyanPieces != cyanPieces && cyanPieces != 0)
         {
             if (cyanPieces % 20 == 0)
             {

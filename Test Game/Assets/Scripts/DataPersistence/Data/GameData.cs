@@ -7,6 +7,7 @@ using LargeNumbers;
 public class GameData 
 {
     public AlphabeticNotation coins;
+    public Vector3 startingPosition = new Vector3(2, 0, -40.5f);
     public Vector3 playerPosition;
     public double greenTreesCollected;
     public double pinkTreesCollected;
@@ -16,7 +17,7 @@ public class GameData
     public GameData()
     {
         this.coins = new AlphabeticNotation(0d);
-        playerPosition = new Vector3(2, 0, -40.5f);
+        this.playerPosition = startingPosition;
         this.greenTreesCollected = 0;
         this.pinkTreesCollected = 0;
         this.cyanTreesCollected = 0;

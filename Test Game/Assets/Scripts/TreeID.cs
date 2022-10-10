@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using GameAnalyticsSDK;
 
 public class TreeID : MonoBehaviour, IDataPersistence
 {
@@ -12,11 +11,6 @@ public class TreeID : MonoBehaviour, IDataPersistence
     private void GenerateGuid()
     {
         id = System.Guid.NewGuid().ToString();
-    }
-
-    private void Start()
-    {
-        GameAnalytics.Initialize();
     }
 
     public void LoadData(GameData data)
