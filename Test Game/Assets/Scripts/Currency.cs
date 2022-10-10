@@ -9,6 +9,9 @@ public class Currency : MonoBehaviour, IDataPersistence
     public TextMeshProUGUI AlphabeticNotationText;
     public AlphabeticNotation currency = new AlphabeticNotation(0d);
     public GameObject player;
+    public int greenTreeValue = 1;
+    public int pinkTreeValue = 2;
+    public int cyanTreeValue = 3;
 
     // Update is called once per frame
     void Update()
@@ -30,18 +33,17 @@ public class Currency : MonoBehaviour, IDataPersistence
     {
         if (other.gameObject.CompareTag("player"))
         {
-            currency = currency + (player.GetComponent<ItemPickup>().greenTreesCollected * 1);
-            currency = currency + (player.GetComponent<ItemPickup>().pinkTreesCollected * 2);
-            currency = currency + (player.GetComponent<ItemPickup>().cyanTreesCollected * 3);
-
-            player.GetComponent<ItemPickup>().greenTreesCollected = 0;
-            player.GetComponent<ItemPickup>().pinkTreesCollected = 0;
-            player.GetComponent<ItemPickup>().cyanTreesCollected = 0;
+            currency = currency + (player.GetComponent<ItemPickup>().greenTreesCollected * greenTreeValue);
+            currency = currency + (player.GetComponent<ItemPickup>().pinkTreesCollected * pinkTreeValue);
+            currency = currency + (player.GetComponent<ItemPickup>().cyanTreesCollected * cyanTreeValue);
 
             player.GetComponent<ItemPickup>().greenPieces = 0;
             player.GetComponent<ItemPickup>().pinkPieces = 0;
             player.GetComponent<ItemPickup>().cyanPieces = 0;
 
+            player.GetComponent<ItemPickup>().greenTreesCollected = 0;
+            player.GetComponent<ItemPickup>().pinkTreesCollected = 0;
+            player.GetComponent<ItemPickup>().cyanTreesCollected = 0;
         }
     }
 }

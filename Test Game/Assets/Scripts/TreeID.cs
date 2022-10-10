@@ -6,11 +6,27 @@ public class TreeID : MonoBehaviour, IDataPersistence
 {
     [SerializeField] public bool isChopped = false;
     [SerializeField] public string id;
+    [SerializeField] public int treeHealth = 100;
+    
 
     [ContextMenu("Generate guid for id")]
     private void GenerateGuid()
     {
         id = System.Guid.NewGuid().ToString();
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("axe"))
+        {
+            treeHealth -= other.GetComponent<Chop>().damage;
+
+            if(treeHealth <= 0)
+            {
+
+            isChopped = true;
+            }
+        }
     }
 
     public void LoadData(GameData data)

@@ -10,10 +10,8 @@ TagManager:
   - shop
   - pickup_green
   - pickup_pink
-  - green_tree
-  - pink_tree
-  - cyan_tree
   - pickup_cyan
+  - tree
   layers:
   - Default
   - TransparentFX

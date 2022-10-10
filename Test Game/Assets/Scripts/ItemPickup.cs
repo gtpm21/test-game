@@ -18,6 +18,7 @@ public class ItemPickup : MonoBehaviour, IDataPersistence
     public double greenTreesCollected;
     public double pinkTreesCollected;
     public double cyanTreesCollected;
+    private int treePieces = 61;
 
     // Start is called before the first frame update
     void Start()
@@ -42,7 +43,7 @@ public class ItemPickup : MonoBehaviour, IDataPersistence
 
         if (previousGreenPieces != greenPieces && greenPieces != 0)
         {
-            if(greenPieces % 20 == 0)
+            if(greenPieces % treePieces == 0)
             {
                 greenTreesCollected++;
             }
@@ -52,7 +53,7 @@ public class ItemPickup : MonoBehaviour, IDataPersistence
 
         if (previousPinkPieces != pinkPieces && pinkPieces != 0)
         {
-            if (pinkPieces % 20 == 0)
+            if (pinkPieces % treePieces == 0)
             {
                 pinkTreesCollected++;
             }
@@ -62,7 +63,7 @@ public class ItemPickup : MonoBehaviour, IDataPersistence
 
         if (previousCyanPieces != cyanPieces && cyanPieces != 0)
         {
-            if (cyanPieces % 20 == 0)
+            if (cyanPieces % treePieces == 0)
             {
                 cyanTreesCollected++;
             }
