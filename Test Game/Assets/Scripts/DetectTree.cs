@@ -20,31 +20,11 @@ public class DetectTree : MonoBehaviour
         DetectTreesInVicinity();
     }
 
-
-    /*private void OnTriggerStay(Collider other)
-    {
-        if (other.gameObject.CompareTag("tree") && js.Horizontal == 0 && js.Vertical == 0)
-        {
-            animator.SetBool("tree_detected", true);
-        }
-    }
-
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.gameObject.CompareTag("tree"))
-        {
-            animator.SetBool("tree_detected", false);
-        }
-    }*/
-    private void OnDrawGizmosSelected()
-    {
-        Gizmos.DrawWireSphere(transform.position, treeDetectionSphereRadius);
-    }
     void DetectTreesInVicinity()
     {
 
         Collider[] cols = Physics.OverlapSphere(transform.position, treeDetectionSphereRadius, myLayerMask);
-        if (cols.Length != 0)
+        if (cols.Length != 0 && js.Horizontal == 0 && js.Vertical == 0)
         {
              animator.SetBool("tree_detected", true);
         }

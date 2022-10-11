@@ -18,7 +18,7 @@ public class TreeID : MonoBehaviour, IDataPersistence
 
     private void Start()
     {
-        id = System.Guid.NewGuid().ToString();
+        //id = System.Guid.NewGuid().ToString();
     }
 
     private void OnTriggerEnter(Collider other)
@@ -29,8 +29,9 @@ public class TreeID : MonoBehaviour, IDataPersistence
 
             if(treeHealth <= 0)
             {
-                Instantiate(fractured, transform.position, transform.rotation);
                 isChopped = true;
+                Instantiate(fractured, transform.position, transform.rotation);
+                //fractured.GetComponent<Explosion>().Explode();
                 Destroy(gameObject);
             }
         }
