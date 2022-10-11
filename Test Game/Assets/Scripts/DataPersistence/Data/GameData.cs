@@ -14,6 +14,13 @@ public class GameData
     public double cyanTreesCollected;
     public SerializableDictionary<string, bool> treesChopped;
 
+
+
+
+    public int zonesGenerated;
+    public int zPos;
+
+
     public GameData()
     {
         this.coins = new AlphabeticNotation(0d);
@@ -22,5 +29,12 @@ public class GameData
         this.pinkTreesCollected = 0;
         this.cyanTreesCollected = 0;
         treesChopped = new SerializableDictionary<string, bool>();
+
+
+
+
+        this.zonesGenerated = 0;
+        this.zPos = 100;
+
     }
 }

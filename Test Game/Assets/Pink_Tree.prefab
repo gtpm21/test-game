@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 8762639225059956086}
   - component: {fileID: 4355967465325946223}
   m_Layer: 3
-  m_Name: tree
+  m_Name: Pink_Tree
   m_TagString: tree
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -64,7 +64,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 847df1f9d2c79ba499b182bc8b71bb1f, type: 2}
+  - {fileID: 2100000, guid: 34af517890284cb41972905f678fcdc5, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -130,5 +130,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isChopped: 0
   id: 
-  treeHealth: 100
-  fractured: {fileID: 3792883021480249709, guid: dccd13279432b5b49aa03f6f209ef7ff, type: 3}
+  treeHealth: 150
+  fractured: {fileID: 3792883021480249709, guid: 904bbf81a9faa1c44a11e8dd847f2b29, type: 3}

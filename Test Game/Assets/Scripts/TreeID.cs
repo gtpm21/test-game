@@ -5,7 +5,7 @@ using UnityEngine;
 public class TreeID : MonoBehaviour, IDataPersistence
 {
     [SerializeField] private bool isChopped = false;
-    [SerializeField] private string id;
+    [SerializeField] public string id;
     [SerializeField] private int treeHealth = 100;
     [SerializeField] private GameObject fractured;
     
