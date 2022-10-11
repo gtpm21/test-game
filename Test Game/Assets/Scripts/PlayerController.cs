@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour, IDataPersistence
     [SerializeField] private FloatingJoystick js;
     [SerializeField] private Animator animator;
     [SerializeField] private float MoveSpeed;
+    [SerializeField] private GameObject axe;
 
     public void LoadData(GameData data)
     {
@@ -35,5 +36,14 @@ public class PlayerController : MonoBehaviour, IDataPersistence
             animator.SetBool("idling", true);
         }
                    
+    }
+    public void ActivateAxeTag()
+    {
+        axe.tag = "axe";
+    }
+
+    public void DeactivateAxeTag()
+    {
+        axe.tag = "Untagged";
     }
 }

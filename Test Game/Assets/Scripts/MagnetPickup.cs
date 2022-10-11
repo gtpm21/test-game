@@ -5,7 +5,7 @@ using UnityEngine;
 public class MagnetPickup : MonoBehaviour
 {
     Rigidbody rb;
-    public float speed;
+    public float speed = 20f;
     public float force = 20f;
 
     private void OnTriggerStay(Collider other)

@@ -12,11 +12,13 @@ TagManager:
   - pickup_pink
   - pickup_cyan
   - tree
+  - pink_tree
+  - cyan_tree
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Damageable
   - Water
   - UI
   - 

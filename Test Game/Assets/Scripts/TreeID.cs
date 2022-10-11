@@ -4,13 +4,19 @@ using UnityEngine;
 
 public class TreeID : MonoBehaviour, IDataPersistence
 {
-    [SerializeField] public bool isChopped = false;
-    [SerializeField] public string id;
-    [SerializeField] public int treeHealth = 100;
+    [SerializeField] private bool isChopped = false;
+    [SerializeField] private string id;
+    [SerializeField] private int treeHealth = 100;
+    [SerializeField] private GameObject fractured;
     
 
     [ContextMenu("Generate guid for id")]
     private void GenerateGuid()
+    {
+        id = System.Guid.NewGuid().ToString();
+    }
+
+    private void Start()
     {
         id = System.Guid.NewGuid().ToString();
     }
@@ -23,8 +29,9 @@ public class TreeID : MonoBehaviour, IDataPersistence
 
             if(treeHealth <= 0)
             {
-
-            isChopped = true;
+                Instantiate(fractured, transform.position, transform.rotation);
+                isChopped = true;
+                Destroy(gameObject);
             }
         }
     }

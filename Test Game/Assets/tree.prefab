@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 2984217427287396256}
   - component: {fileID: 8762639225059956086}
   - component: {fileID: 4355967465325946223}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: tree
   m_TagString: tree
   m_Icon: {fileID: 0}
@@ -131,3 +131,4 @@ MonoBehaviour:
   isChopped: 0
   id: 
   treeHealth: 100
+  fractured: {fileID: 3792883021480249709, guid: dccd13279432b5b49aa03f6f209ef7ff, type: 3}

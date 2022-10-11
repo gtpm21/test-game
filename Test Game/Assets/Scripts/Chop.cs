@@ -4,5 +4,5 @@ using UnityEngine;
 
 public class Chop : MonoBehaviour
 {
-    public int damage = 35;
+    public int damage = 50;
 }
