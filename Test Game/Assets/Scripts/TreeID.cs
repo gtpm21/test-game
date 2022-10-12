@@ -4,11 +4,13 @@ using UnityEngine;
 
 public class TreeID : MonoBehaviour, IDataPersistence
 {
-    [SerializeField] private bool isChopped = false;
+    [SerializeField] public bool isChopped = false;
     [SerializeField] public string id;
     [SerializeField] private int treeHealth = 100;
     [SerializeField] private GameObject fractured;
-    
+    [SerializeField] private GameObject prefab;
+    [SerializeField] public Vector3 treePos;
+
 
     [ContextMenu("Generate guid for id")]
     private void GenerateGuid()
@@ -18,7 +20,7 @@ public class TreeID : MonoBehaviour, IDataPersistence
 
     private void Start()
     {
-        //id = System.Guid.NewGuid().ToString();
+        treePos = gameObject.transform.position;
     }
 
     private void OnTriggerEnter(Collider other)
@@ -31,7 +33,6 @@ public class TreeID : MonoBehaviour, IDataPersistence
             {
                 isChopped = true;
                 Instantiate(fractured, transform.position, transform.rotation);
-                //fractured.GetComponent<Explosion>().Explode();
                 Destroy(gameObject);
             }
         }
@@ -39,20 +40,31 @@ public class TreeID : MonoBehaviour, IDataPersistence
 
     public void LoadData(GameData data)
     {
-        data.treesChopped.TryGetValue(id, out isChopped);
+        data.treesChoppedDic.TryGetValue(id, out isChopped);
         if (isChopped)
         {
             gameObject.SetActive(false);
+        }
+
+        data.treesPositionDic.TryGetValue(id, out treePos);
+        if (!isChopped && gameObject.activeInHierarchy == false) { 
+            Instantiate(prefab, treePos, Quaternion.identity);
         }
     }
 
     public void SaveData(GameData data)
     {
-        if (data.treesChopped.ContainsKey(id))
+        if (data.treesChoppedDic.ContainsKey(id))
         {
-            data.treesChopped.Remove(id);
+            data.treesChoppedDic.Remove(id);
         }
-        data.treesChopped.Add(id, isChopped);
+        data.treesChoppedDic.Add(id, isChopped);
+
+        if (data.treesPositionDic.ContainsKey(id))
+        {
+            data.treesPositionDic.Remove(id);
+        }
+        data.treesPositionDic.Add(id, treePos);
     }
 
 }

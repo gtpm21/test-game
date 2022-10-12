@@ -14,11 +14,6 @@ public class GenerateZone : MonoBehaviour
     private float generationLimitLenght = 50;
     private int zoneLenght = 100;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
     private void OnTriggerEnter(Collider other)
     {
@@ -30,6 +25,7 @@ public class GenerateZone : MonoBehaviour
             GameObject newZone = Instantiate(zone, new Vector3(0, 0, zPos), Quaternion.identity);
             gameObject.transform.position = gameObject.transform.position + new Vector3(0, 0, zoneLenght);
 
+
             if (zPos == 100) 
             {
                 for (int i = 0; i <= numberOfTrees; i++) 
@@ -37,6 +33,8 @@ public class GenerateZone : MonoBehaviour
                     var position = new Vector3(Random.Range(-generationLimitWidth, generationLimitWidth), 0, Random.Range(zPos - generationLimitLenght, zPos + generationLimitLenght));
                     GameObject tree = Instantiate(prefab[0], position, Quaternion.identity, newZone.transform);
                     tree.GetComponent<TreeID>().id = System.Guid.NewGuid().ToString();
+                    tree.GetComponent<TreeID>().isChopped = false;
+                    tree.GetComponent<TreeID>().treePos = tree.transform.position;
                 }
             }
             else if (zPos >100)
@@ -46,6 +44,8 @@ public class GenerateZone : MonoBehaviour
                     var position = new Vector3(Random.Range(-generationLimitWidth, generationLimitWidth), 0, Random.Range(zPos - generationLimitLenght, zPos + generationLimitLenght));
                     GameObject tree = Instantiate(prefab[1], position, Quaternion.identity, newZone.transform);
                     tree.GetComponent<TreeID>().id = System.Guid.NewGuid().ToString();
+                    tree.GetComponent<TreeID>().isChopped = false;
+                    tree.GetComponent<TreeID>().treePos = tree.transform.position;
                 }
             }
             holder.GetComponent<GameManager>().zonesGenerated++;

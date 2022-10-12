@@ -13,7 +13,6 @@ public class Currency : MonoBehaviour, IDataPersistence
     public int pinkTreeValue = 2;
     public int cyanTreeValue = 3;
 
-    // Update is called once per frame
     void Update()
     {
         AlphabeticNotationText.text = currency.ToString();

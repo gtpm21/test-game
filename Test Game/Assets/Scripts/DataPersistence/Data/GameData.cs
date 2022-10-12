@@ -12,11 +12,11 @@ public class GameData
     public double greenTreesCollected;
     public double pinkTreesCollected;
     public double cyanTreesCollected;
-    public SerializableDictionary<string, bool> treesChopped;
+    public SerializableDictionary<string, bool> treesChoppedDic;
 
 
 
-
+    public SerializableDictionary<string, Vector3> treesPositionDic;
     public int zonesGenerated;
     public int zPos;
 
@@ -28,11 +28,11 @@ public class GameData
         this.greenTreesCollected = 0;
         this.pinkTreesCollected = 0;
         this.cyanTreesCollected = 0;
-        treesChopped = new SerializableDictionary<string, bool>();
+        treesChoppedDic = new SerializableDictionary<string, bool>();
 
 
 
-
+        treesPositionDic = new SerializableDictionary<string, Vector3>();
         this.zonesGenerated = 0;
         this.zPos = 100;
 

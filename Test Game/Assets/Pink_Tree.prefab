@@ -132,3 +132,4 @@ MonoBehaviour:
   id: 
   treeHealth: 150
   fractured: {fileID: 3792883021480249709, guid: 904bbf81a9faa1c44a11e8dd847f2b29, type: 3}
+  prefab: {fileID: 1419519590499563225}
