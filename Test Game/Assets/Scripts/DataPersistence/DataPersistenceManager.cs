@@ -56,6 +56,9 @@ public class DataPersistenceManager : MonoBehaviour
 
     public void SaveGame()
     {
+        //
+        this.dataPersistenceObjects = FindAllDataPersistenceObjects();
+        //
         foreach (IDataPersistence dataPersistenceObj in dataPersistenceObjects)
         {
             dataPersistenceObj.SaveData(gameData);

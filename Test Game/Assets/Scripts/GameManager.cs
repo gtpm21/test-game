@@ -12,6 +12,11 @@ public class GameManager : MonoBehaviour, IDataPersistence
     public GameObject zone;
     public GameObject wallTrigger;
 
+    public bool isChopped;
+    public string id;
+    public Vector3 treePos;
+    public GameObject[] prefab;
+
     private void Start()
     {
         GameAnalytics.Initialize();
@@ -25,6 +30,23 @@ public class GameManager : MonoBehaviour, IDataPersistence
         if(zonesGenerated > 0) 
         {
             LoadZones();
+        }
+
+
+
+        foreach (var item in data.treesPositionDic)
+        {           
+            if(item.Value.z < 150 && item.Value.z > 50)
+            {
+                GameObject tree = Instantiate(prefab[1], item.Value, Quaternion.identity);
+                tree.GetComponent<TreeID>().id = item.Key;
+            }
+            else if (item.Value.z > 150)
+            {
+                GameObject tree = Instantiate(prefab[2], item.Value, Quaternion.identity);
+                tree.GetComponent<TreeID>().id = item.Key;
+
+            }
         }
     }
 
