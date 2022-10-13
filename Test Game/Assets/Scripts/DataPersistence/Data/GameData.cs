@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using LargeNumbers;
 
+//Class of data we want to store
+
 [System.Serializable]
 public class GameData 
 {
@@ -15,7 +17,7 @@ public class GameData
     public int zonesGenerated;
     public int zPos;
 
-
+    public bool generatedStartingTrees;
     public SerializableDictionary<string, bool> dicIsChopped;//lmao
     public SerializableDictionary<string, float> dicXPos;
     public SerializableDictionary<string, float> dicYPos;
@@ -33,7 +35,7 @@ public class GameData
         this.zonesGenerated = 0;
         this.zPos = 100;
 
-
+        this.generatedStartingTrees = false;
         dicIsChopped = new SerializableDictionary<string, bool>();
         dicXPos = new SerializableDictionary<string, float>();
         dicYPos = new SerializableDictionary<string, float>();

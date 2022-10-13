@@ -19,13 +19,6 @@ public class TreeID : MonoBehaviour, IDataPersistence
         id = System.Guid.NewGuid().ToString();
     }
 
-    private void Start()
-    {
-        var item = gameObject.GetComponent(typeof(IDataPersistence)) as IDataPersistence;
-        Debug.Log(item);
-        //DataPersistenceManager.instance.dataPersistenceObjects.Add(lol);
-    }
-
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("axe"))
@@ -43,18 +36,7 @@ public class TreeID : MonoBehaviour, IDataPersistence
 
     public void LoadData(GameData data)
     {
-        data.dicIsChopped.TryGetValue(id, out isChopped);
-        if (isChopped)
-        {
-            gameObject.SetActive(false);
-        }
-        if(data.dicXPos.ContainsKey(id) && data.dicYPos.ContainsKey(id) && data.dicZPos.ContainsKey(id))
-        {
-            data.dicXPos.TryGetValue(id, out xPos);
-            data.dicYPos.TryGetValue(id, out yPos);
-            data.dicZPos.TryGetValue(id, out zPos);
-            transform.position = new Vector3(xPos, yPos, zPos);
-        }
+
     }
 
     public void SaveData(GameData data)

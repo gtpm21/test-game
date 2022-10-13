@@ -33,19 +33,42 @@ public class GameManager : MonoBehaviour, IDataPersistence
         {
             LoadZones();
         }
+        //Loading trees
+        foreach(var item in data.dicZPos)
+        {
+            treePos = new Vector3(data.dicXPos[item.Key], data.dicYPos[item.Key], item.Value);
 
-
-
-                   
-            /*if(item.Value.z < 150 && item.Value.z > 50)
+            if(item.Value < 50)
             {
-                GameObject tree = Instantiate(prefab[1], item.Value, Quaternion.identity);
+                GameObject tree = Instantiate(prefab[0], treePos, Quaternion.identity);
+                tree.GetComponent<TreeID>().id = item.Key;
+                tree.GetComponent<TreeID>().isChopped = data.dicIsChopped[item.Key];
+                if (tree.GetComponent<TreeID>().isChopped == true)
+                {
+                    tree.SetActive(false);
+                }
             }
-            else if (item.Value.z > 150)
+            else if (item.Value < 150 && item.Value > 50)
             {
-                GameObject tree = Instantiate(prefab[2], item.Value, Quaternion.identity);
-            }*/
-        
+                GameObject tree = Instantiate(prefab[1], treePos, Quaternion.identity);
+                tree.GetComponent<TreeID>().id = item.Key;
+                tree.GetComponent<TreeID>().isChopped = data.dicIsChopped[item.Key];
+                if (tree.GetComponent<TreeID>().isChopped == true)
+                {
+                    tree.SetActive(false);
+                }
+            }
+            else if (item.Value > 150)
+            {
+                GameObject tree = Instantiate(prefab[2], treePos, Quaternion.identity);
+                tree.GetComponent<TreeID>().id = item.Key;
+                tree.GetComponent<TreeID>().isChopped = data.dicIsChopped[item.Key];
+                if (tree.GetComponent<TreeID>().isChopped == true)
+                {
+                    tree.SetActive(false);
+                }
+            }
+        } 
     }
 
     public void SaveData(GameData data)

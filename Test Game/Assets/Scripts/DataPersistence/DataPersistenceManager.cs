@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using UnityEngine.SceneManagement;
 
 public class DataPersistenceManager : MonoBehaviour
 {
@@ -57,6 +58,8 @@ public class DataPersistenceManager : MonoBehaviour
     public void SaveGame()
     {
 
+        UpdateDataPersistenceObjects();
+
         foreach (IDataPersistence dataPersistenceObj in dataPersistenceObjects)
         {
             dataPersistenceObj.SaveData(gameData);
@@ -71,14 +74,14 @@ public class DataPersistenceManager : MonoBehaviour
         SaveGame();
     }
 
-    public void updateDataPersistenceObjects(IDataPersistence item)
+    public void UpdateDataPersistenceObjects()
     {
-        dataPersistenceObjects.Add(item);
-        foreach (var x in dataPersistenceObjects)
+        var rootObjs = SceneManager.GetActiveScene().GetRootGameObjects();
+        foreach (var root in rootObjs)
         {
-            Debug.Log(x.ToString());
+            // Pass in "true" to include inactive and disabled children
+            dataPersistenceObjects.AddRange(root.GetComponentsInChildren<IDataPersistence>(true));
         }
-
     }
 
     private List<IDataPersistence> FindAllDataPersistenceObjects()
