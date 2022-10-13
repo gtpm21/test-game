@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//Player movement class
+
 [RequireComponent(typeof(Rigidbody), typeof(BoxCollider))]
 
 public class PlayerController : MonoBehaviour, IDataPersistence
@@ -37,6 +39,8 @@ public class PlayerController : MonoBehaviour, IDataPersistence
         }
                    
     }
+
+    //Two classes created to be used by the animator events.
     public void ActivateAxeTag()
     {
         axe.tag = "axe";

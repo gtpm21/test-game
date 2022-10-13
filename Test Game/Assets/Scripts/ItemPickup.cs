@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
+//Class handling item pickup and counting the different kinds of pickups/loot
 public class ItemPickup : MonoBehaviour, IDataPersistence
 {
     public Canvas canvas;

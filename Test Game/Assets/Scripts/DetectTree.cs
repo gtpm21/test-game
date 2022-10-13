@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//Class handling tree detection and chopping animation activation.
 public class DetectTree : MonoBehaviour
 {
     [SerializeField] private GameObject axe;

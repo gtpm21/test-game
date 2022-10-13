@@ -4,6 +4,7 @@ using UnityEngine;
 using System;
 using System.IO;
 
+//Class handling all the writing and reading of files using JSON format. 
 public class FileDataHandler 
 {
     private string dataDirPath = "";

@@ -4,6 +4,7 @@ using UnityEngine;
 using LargeNumbers;
 using TMPro;
 
+//Class handling shop functions and player currency
 public class Currency : MonoBehaviour, IDataPersistence
 {
     public TextMeshProUGUI AlphabeticNotationText;

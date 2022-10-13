@@ -1572,7 +1572,7 @@ namespace GameAnalyticsSDK.Editor
             };
             www.uploadHandler = uH;
             www.downloadHandler = new DownloadHandlerBuffer();
-            Dictionary<string, string> headers = GA_EditorUtilities.WWWHeaders();
+            System.Collections.Generic.Dictionary<string, string> headers = GA_EditorUtilities.WWWHeaders();
             foreach (KeyValuePair<string, string> entry in headers)
             {
                 www.SetRequestHeader(entry.Key, entry.Value);
@@ -1701,7 +1701,7 @@ namespace GameAnalyticsSDK.Editor
             www.uploadHandler = uH;
             www.downloadHandler = new DownloadHandlerBuffer();
 
-            Dictionary<string, string> headers = GA_EditorUtilities.WWWHeaders();
+            System.Collections.Generic.Dictionary<string, string> headers = GA_EditorUtilities.WWWHeaders();
             foreach (KeyValuePair<string, string> entry in headers)
             {
                 www.SetRequestHeader(entry.Key, entry.Value);
@@ -1806,7 +1806,7 @@ namespace GameAnalyticsSDK.Editor
         {
 #if UNITY_2017_1_OR_NEWER
             UnityWebRequest www = UnityWebRequest.Get(_gaUrl + "user");
-            Dictionary<string, string> headers = GA_EditorUtilities.WWWHeadersWithAuthorization(ga.TokenGA);
+            System.Collections.Generic.Dictionary<string, string> headers = GA_EditorUtilities.WWWHeadersWithAuthorization(ga.TokenGA);
             foreach (KeyValuePair<string, string> entry in headers)
             {
                 www.SetRequestHeader(entry.Key, entry.Value);
@@ -1881,7 +1881,7 @@ namespace GameAnalyticsSDK.Editor
                         IDictionary<string, object> orgs = results["organizations"] as IDictionary<string, object>;
                         IList<object> studioList = results["studios"] as IList<object>;
 
-                        Dictionary<string, GameAnalyticsSDK.Setup.Organization> organizationMap = new Dictionary<string, GameAnalyticsSDK.Setup.Organization>();
+                        System.Collections.Generic.Dictionary<string, Organization> organizationMap = new System.Collections.Generic.Dictionary<string, Organization>();
                         List<GameAnalyticsSDK.Setup.Organization> returnOrganizations = new List<GameAnalyticsSDK.Setup.Organization>();
                         foreach(KeyValuePair<string, object> pair in orgs)
                         {
@@ -1990,7 +1990,7 @@ namespace GameAnalyticsSDK.Editor
             };
             www.uploadHandler = uH;
             www.downloadHandler = new DownloadHandlerBuffer();
-            Dictionary<string, string> headers = GA_EditorUtilities.WWWHeadersWithAuthorization(ga.TokenGA);
+            System.Collections.Generic.Dictionary<string, string> headers = GA_EditorUtilities.WWWHeadersWithAuthorization(ga.TokenGA);
             foreach (KeyValuePair<string, string> entry in headers)
             {
                 www.SetRequestHeader(entry.Key, entry.Value);
@@ -2092,7 +2092,7 @@ namespace GameAnalyticsSDK.Editor
         {
 #if UNITY_2017_1_OR_NEWER
             UnityWebRequest www = UnityWebRequest.Get(_gaUrl + "apps/search?query=" + UnityWebRequest.EscapeURL(ga.GameName));
-            Dictionary<string, string> headers = GA_EditorUtilities.WWWHeadersWithAuthorization(ga.TokenGA);
+            System.Collections.Generic.Dictionary<string, string> headers = GA_EditorUtilities.WWWHeadersWithAuthorization(ga.TokenGA);
             foreach (KeyValuePair<string, string> pair in headers)
             {
                 www.SetRequestHeader(pair.Key, pair.Value);

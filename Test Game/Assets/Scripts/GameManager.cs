@@ -3,14 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using GameAnalyticsSDK;
 
+//class handling the saving and loading of zones and trees. Also used to initialize GameAnalytics.
+
 public class GameManager : MonoBehaviour, IDataPersistence
 {
+    [SerializeField] private GameObject zone;
+    [SerializeField] private GameObject wallTrigger;
     public int zPos;
     private int tempzPos;
     private int zoneLenght = 100;
     public int zonesGenerated;
-    public GameObject zone;
-    public GameObject wallTrigger;
 
     public bool isChopped;
     public string id;
@@ -34,20 +36,16 @@ public class GameManager : MonoBehaviour, IDataPersistence
 
 
 
-        foreach (var item in data.treesPositionDic)
-        {           
-            if(item.Value.z < 150 && item.Value.z > 50)
+                   
+            /*if(item.Value.z < 150 && item.Value.z > 50)
             {
                 GameObject tree = Instantiate(prefab[1], item.Value, Quaternion.identity);
-                tree.GetComponent<TreeID>().id = item.Key;
             }
             else if (item.Value.z > 150)
             {
                 GameObject tree = Instantiate(prefab[2], item.Value, Quaternion.identity);
-                tree.GetComponent<TreeID>().id = item.Key;
-
-            }
-        }
+            }*/
+        
     }
 
     public void SaveData(GameData data)

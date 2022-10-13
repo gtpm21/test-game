@@ -2,14 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//Class handling tree behavior
 public class TreeID : MonoBehaviour, IDataPersistence
 {
-    [SerializeField] public bool isChopped;
-    [SerializeField] public string id;
-    [SerializeField] public Vector3 treePos;
     [SerializeField] private int treeHealth = 100;
     [SerializeField] private GameObject fractured;
-
+    [SerializeField] public bool isChopped;
+    [SerializeField] public string id;
+    [SerializeField] public float xPos;
+    [SerializeField] public float yPos;
+    [SerializeField] public float zPos;
 
     [ContextMenu("Generate guid for id")]
     private void GenerateGuid()
@@ -19,7 +21,8 @@ public class TreeID : MonoBehaviour, IDataPersistence
 
     private void Start()
     {
-
+        //DataPersistenceManager.instance.UpdateDataPersistenceObjects(this);
+        //DataPersistenceManager.instance.dataPersistenceObjects.Add(this);
     }
 
     private void OnTriggerEnter(Collider other)
@@ -39,27 +42,44 @@ public class TreeID : MonoBehaviour, IDataPersistence
 
     public void LoadData(GameData data)
     {
-
+        data.dicIsChopped.TryGetValue(id, out isChopped);
+        if (isChopped)
+        {
+            gameObject.SetActive(false);
+        }
+        if(data.dicXPos.ContainsKey(id) && data.dicYPos.ContainsKey(id) && data.dicZPos.ContainsKey(id))
+        {
+            data.dicXPos.TryGetValue(id, out xPos);
+            data.dicYPos.TryGetValue(id, out yPos);
+            data.dicZPos.TryGetValue(id, out zPos);
+            transform.position = new Vector3(xPos, yPos, zPos);
+        }
     }
 
     public void SaveData(GameData data)
     {
-        //if (isChopped)
-        //{
-        //    data.treesChoppedDic[id] = true;
-        //}
-        data.treesPositionDic[id] = gameObject.transform.position;
-
-        if (data.treesChoppedDic.ContainsKey(id))
+        if (data.dicIsChopped.ContainsKey(id))
         {
-            data.treesChoppedDic.Remove(id);
+            data.dicIsChopped.Remove(id);
         }
-        data.treesChoppedDic.Add(id, isChopped);
+        data.dicIsChopped.Add(id, isChopped);
 
-        /*if (data.treesPositionDic.ContainsKey(id))
+        if (data.dicXPos.ContainsKey(id))
         {
-            data.treesPositionDic.Remove(id);
+            data.dicXPos.Remove(id);
         }
-        data.treesPositionDic.Add(id, gameObject.transform.position);*/
-    }
+        data.dicXPos.Add(id, transform.position.x);
+
+        if (data.dicYPos.ContainsKey(id))
+        {
+            data.dicYPos.Remove(id);
+        }
+        data.dicYPos.Add(id, transform.position.y);
+
+        if (data.dicZPos.ContainsKey(id))
+        {
+            data.dicZPos.Remove(id);
+        }
+        data.dicZPos.Add(id, transform.position.z);
+    }   
 }

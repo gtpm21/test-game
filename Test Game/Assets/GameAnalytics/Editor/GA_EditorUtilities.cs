@@ -45,9 +45,9 @@ namespace GameAnalyticsSDK.Editor
 			}
 		}
 
-		public static Dictionary<string, string> WWWHeaders()
+		public static System.Collections.Generic.Dictionary<string, string> WWWHeaders()
 		{
-			Dictionary<string, string> result = new Dictionary<string, string> ();
+            System.Collections.Generic.Dictionary<string, string> result = new System.Collections.Generic.Dictionary<string, string> ();
 			result [XCallerKey] = XCaller;
 			result [XCallerVersionKey] = XCallerVersion;
 			result [XCallerPlatformKey] = XCallerPlatform;
@@ -55,9 +55,9 @@ namespace GameAnalyticsSDK.Editor
 			return result;
 		}
 
-		public static Dictionary<string, string> WWWHeadersWithAuthorization(string token)
+		public static System.Collections.Generic.Dictionary<string, string> WWWHeadersWithAuthorization(string token)
 		{
-			Dictionary<string, string> result = new Dictionary<string, string> ();
+            System.Collections.Generic.Dictionary<string, string> result = new System.Collections.Generic.Dictionary<string, string> ();
 			result [XCallerKey] = XCaller;
 			result [XCallerVersionKey] = XCallerVersion;
 			result [XCallerPlatformKey] = XCallerPlatform;

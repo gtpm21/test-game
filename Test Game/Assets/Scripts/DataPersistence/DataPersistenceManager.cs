@@ -10,7 +10,7 @@ public class DataPersistenceManager : MonoBehaviour
 
     private GameData gameData;
 
-    private List<IDataPersistence> dataPersistenceObjects;
+    public List<IDataPersistence> dataPersistenceObjects;
 
     private FileDataHandler dataHandler;
 
@@ -18,7 +18,7 @@ public class DataPersistenceManager : MonoBehaviour
 
     private void Awake()
     {
-        if(instance != null)
+        if (instance != null)
         {
             Debug.LogError("Found more than one Data Persistence Manager in the scene.");
         }
@@ -41,7 +41,7 @@ public class DataPersistenceManager : MonoBehaviour
     {
         this.gameData = dataHandler.Load();
 
-        if(this.gameData == null)
+        if (this.gameData == null)
         {
             Debug.Log("No data was found. Initializing data to defaults.");
             NewGame();
@@ -57,7 +57,7 @@ public class DataPersistenceManager : MonoBehaviour
     public void SaveGame()
     {
         //
-        this.dataPersistenceObjects = FindAllDataPersistenceObjects();
+        //this.dataPersistenceObjects = FindAllDataPersistenceObjects();
         //
         foreach (IDataPersistence dataPersistenceObj in dataPersistenceObjects)
         {
@@ -72,6 +72,15 @@ public class DataPersistenceManager : MonoBehaviour
     {
         SaveGame();
     }
+
+
+    ///////////////////////////////////////////////////////////////////////////////////////////
+    public void UpdateDataPersistenceObjects(IDataPersistence script)
+    {
+        dataPersistenceObjects.Add(script);
+    }
+    ///////////////////////////////////////////////////////////////////////////////////////////
+
     private List<IDataPersistence> FindAllDataPersistenceObjects()
     {
         IEnumerable<IDataPersistence> dataPersistenceObjects = FindObjectsOfType<MonoBehaviour>().OfType<IDataPersistence>();

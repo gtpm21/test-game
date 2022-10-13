@@ -85,9 +85,9 @@ namespace GameAnalyticsSDK.Utilities
                 json = null;
             }
 
-            Dictionary<string, object> ParseObject()
+            System.Collections.Generic.Dictionary<string, object> ParseObject()
             {
-                Dictionary<string, object> table = new Dictionary<string, object>();
+                System.Collections.Generic.Dictionary<string, object> table = new System.Collections.Generic.Dictionary<string, object>();
 
                 // ditch opening brace
                 json.Read();

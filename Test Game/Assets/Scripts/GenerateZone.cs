@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//Class handling the generation of new zones based on player progression
 public class GenerateZone : MonoBehaviour 
 {
     public GameObject zone;
@@ -32,10 +33,7 @@ public class GenerateZone : MonoBehaviour
                 {
                     var position = new Vector3(Random.Range(-generationLimitWidth, generationLimitWidth), 0, Random.Range(zPos - generationLimitLenght, zPos + generationLimitLenght));
                     GameObject tree = Instantiate(prefab[0], position, Quaternion.identity, newZone.transform);
-                    tree.GetComponent<TreeID>().id = System.Guid.NewGuid().ToString();
-                    tree.GetComponent<TreeID>().isChopped = false;
-                    tree.GetComponent<TreeID>().treePos = tree.transform.position;
-                }
+                    tree.GetComponent<TreeID>().id = System.Guid.NewGuid().ToString();                }
             }
             else if (zPos >100)
             {
@@ -44,8 +42,6 @@ public class GenerateZone : MonoBehaviour
                     var position = new Vector3(Random.Range(-generationLimitWidth, generationLimitWidth), 0, Random.Range(zPos - generationLimitLenght, zPos + generationLimitLenght));
                     GameObject tree = Instantiate(prefab[1], position, Quaternion.identity, newZone.transform);
                     tree.GetComponent<TreeID>().id = System.Guid.NewGuid().ToString();
-                    tree.GetComponent<TreeID>().isChopped = false;
-                    tree.GetComponent<TreeID>().treePos = tree.transform.position;
                 }
             }
             holder.GetComponent<GameManager>().zonesGenerated++;
