@@ -21,8 +21,9 @@ public class TreeID : MonoBehaviour, IDataPersistence
 
     private void Start()
     {
-        //DataPersistenceManager.instance.UpdateDataPersistenceObjects(this);
-        //DataPersistenceManager.instance.dataPersistenceObjects.Add(this);
+        var item = gameObject.GetComponent(typeof(IDataPersistence)) as IDataPersistence;
+        Debug.Log(item);
+        //DataPersistenceManager.instance.dataPersistenceObjects.Add(lol);
     }
 
     private void OnTriggerEnter(Collider other)

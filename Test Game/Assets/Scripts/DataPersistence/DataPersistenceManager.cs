@@ -56,9 +56,7 @@ public class DataPersistenceManager : MonoBehaviour
 
     public void SaveGame()
     {
-        //
-        //this.dataPersistenceObjects = FindAllDataPersistenceObjects();
-        //
+
         foreach (IDataPersistence dataPersistenceObj in dataPersistenceObjects)
         {
             dataPersistenceObj.SaveData(gameData);
@@ -73,13 +71,15 @@ public class DataPersistenceManager : MonoBehaviour
         SaveGame();
     }
 
-
-    ///////////////////////////////////////////////////////////////////////////////////////////
-    public void UpdateDataPersistenceObjects(IDataPersistence script)
+    public void updateDataPersistenceObjects(IDataPersistence item)
     {
-        dataPersistenceObjects.Add(script);
+        dataPersistenceObjects.Add(item);
+        foreach (var x in dataPersistenceObjects)
+        {
+            Debug.Log(x.ToString());
+        }
+
     }
-    ///////////////////////////////////////////////////////////////////////////////////////////
 
     private List<IDataPersistence> FindAllDataPersistenceObjects()
     {
