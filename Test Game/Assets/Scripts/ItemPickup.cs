@@ -20,6 +20,7 @@ public class ItemPickup : MonoBehaviour, IDataPersistence
     public double pinkTreesCollected;
     public double cyanTreesCollected;
     private int treePieces = 61;
+    public GameObject floatingText;
 
     // Start is called before the first frame update
     void Start()
@@ -47,6 +48,7 @@ public class ItemPickup : MonoBehaviour, IDataPersistence
             if(greenPieces % treePieces == 0)
             {
                 greenTreesCollected++;
+                ShowFloatingText();
             }
             previousGreenPieces = greenPieces;
         }
@@ -57,6 +59,7 @@ public class ItemPickup : MonoBehaviour, IDataPersistence
             if (pinkPieces % treePieces == 0)
             {
                 pinkTreesCollected++;
+                ShowFloatingText();
             }
             previousPinkPieces = pinkPieces;
         }
@@ -67,6 +70,7 @@ public class ItemPickup : MonoBehaviour, IDataPersistence
             if (cyanPieces % treePieces == 0)
             {
                 cyanTreesCollected++;
+                ShowFloatingText();
             }
             previousCyanPieces = cyanPieces;
         }
@@ -104,5 +108,10 @@ public class ItemPickup : MonoBehaviour, IDataPersistence
             cyanPieces++;
             Destroy(col.gameObject);
         }
+    }
+
+    void ShowFloatingText()
+    {
+        Instantiate(floatingText, transform.position, Quaternion.identity);
     }
 }
