@@ -16,6 +16,8 @@ public class GameData
     public double cyanTreesCollected;
     public int zonesGenerated;
     public int zPos;
+    public int damage;
+    public int damageLvl;
 
     public bool generatedStartingTrees;
     public SerializableDictionary<string, bool> dicIsChopped;//lmao
@@ -34,6 +36,8 @@ public class GameData
         this.cyanTreesCollected = 0;
         this.zonesGenerated = 0;
         this.zPos = 100;
+        this.damage = 50;
+        this.damageLvl = 1;
 
         this.generatedStartingTrees = false;
         dicIsChopped = new SerializableDictionary<string, bool>();
