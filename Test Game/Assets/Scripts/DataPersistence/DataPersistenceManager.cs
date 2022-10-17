@@ -74,6 +74,14 @@ public class DataPersistenceManager : MonoBehaviour
         SaveGame();
     }
 
+    private void OnApplicationPause(bool pause)
+    {
+        if (pause)
+        {
+            SaveGame();
+        }
+    }
+
     public void UpdateDataPersistenceObjects()
     {
         var rootObjs = SceneManager.GetActiveScene().GetRootGameObjects();

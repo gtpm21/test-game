@@ -1,14 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using LargeNumbers;
 
 //Class of data we want to store
 
 [System.Serializable]
 public class GameData 
 {
-    public AlphabeticNotation coins;
+    public double coinsCoefficient;
+    public int coinsMagnitude;
     public Vector3 startingPosition = new Vector3(2, 0, -40.5f);
     public Vector3 playerPosition;
     public double greenTreesCollected;
@@ -29,7 +29,8 @@ public class GameData
 
     public GameData()
     {
-        this.coins = new AlphabeticNotation(0d);
+        this.coinsCoefficient = 0;
+        this.coinsMagnitude = 0;
         this.playerPosition = startingPosition;
         this.greenTreesCollected = 0;
         this.pinkTreesCollected = 0;

@@ -8,7 +8,7 @@ using TMPro;
 public class Currency : MonoBehaviour, IDataPersistence
 {
     public TextMeshProUGUI AlphabeticNotationText;
-    public AlphabeticNotation currency = new AlphabeticNotation(0d);
+    public AlphabeticNotation currency = new AlphabeticNotation();
     public GameObject player;
     public int greenTreeValue = 1;
     public int pinkTreeValue = 2;
@@ -21,12 +21,14 @@ public class Currency : MonoBehaviour, IDataPersistence
 
     public void LoadData(GameData data)
     {
-        this.currency = data.coins;
+        this.currency.coefficient = data.coinsCoefficient;
+        this.currency.magnitude = data.coinsMagnitude;
     }
 
     public void SaveData(GameData data)
     {
-        data.coins = this.currency;
+        data.coinsCoefficient = this.currency.coefficient;
+        data.coinsMagnitude = this.currency.magnitude;
     }
 
     private void OnCollisionEnter(Collision other)
