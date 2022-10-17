@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
-using LargeNumbers;
 
 public class UpgradeButtonHandler : MonoBehaviour
 {
@@ -11,23 +10,22 @@ public class UpgradeButtonHandler : MonoBehaviour
     [SerializeField] private TextMeshProUGUI TMPLevel;
     [SerializeField] private TextMeshProUGUI TMPDamage;
     [SerializeField] private TextMeshProUGUI TMPCost;
-    public AlphabeticNotation upgradeCost = new AlphabeticNotation(10d);
 
     private void Update()
     {
         TMPLevel.text = "LVL." + axe.GetComponent<Chop>().damageLvl.ToString();
         TMPDamage.text = axe.GetComponent<Chop>().damage.ToString();
-        TMPCost.text = upgradeCost.ToString();
+        TMPCost.text = axe.GetComponent<Chop>().upgradeCost.ToString() + "G";
     }
 
     public void BuyDamageUpgrade()
     {
         if(currency.GetComponent<Currency>().currency >= 10d)
         {
-            currency.GetComponent<Currency>().currency -= upgradeCost;
+            currency.GetComponent<Currency>().currency -= axe.GetComponent<Chop>().upgradeCost;
             axe.GetComponent<Chop>().damage += 10;
             axe.GetComponent<Chop>().damageLvl++;
-            upgradeCost += 5d;
+            axe.GetComponent<Chop>().upgradeCost += 5;
         }
     }
 }

@@ -18,6 +18,7 @@ public class GameData
     public int zPos;
     public int damage;
     public int damageLvl;
+    public double upgradeCost;
 
     public bool generatedStartingTrees;
     public SerializableDictionary<string, bool> dicIsChopped;//lmao
@@ -39,6 +40,7 @@ public class GameData
         this.zPos = 100;
         this.damage = 50;
         this.damageLvl = 1;
+        this.upgradeCost = 10;
 
         this.generatedStartingTrees = false;
         dicIsChopped = new SerializableDictionary<string, bool>();
